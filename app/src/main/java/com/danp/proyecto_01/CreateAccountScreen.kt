@@ -28,14 +28,17 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import coil.compose.rememberAsyncImagePainter
+import com.danp.proyecto_01.data.ProductViewModel
 import com.danp.proyecto_01.screens.maxLength
 import com.danp.proyecto_01.screens.navigateToDetails
 
 @Composable
 fun CreateAccountScreen(
-    onCreateAccount: (String, String) -> (Unit),
-    navController: NavHostController
-) {
+    onCreateAccount: (String, String, ProductViewModel) -> (Unit),
+    navController: NavHostController,
+    productViewModel: ProductViewModel,
+
+    ) {
     Column(
         modifier = Modifier
             .fillMaxSize(),
@@ -88,7 +91,7 @@ fun CreateAccountScreen(
 
         Button(
             onClick = {
-                onCreateAccount(mail, password)
+                onCreateAccount(mail, password, productViewModel)
             },
             modifier = Modifier
                 .padding(top = 16.dp)

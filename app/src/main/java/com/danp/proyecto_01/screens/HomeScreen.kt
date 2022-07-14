@@ -28,7 +28,7 @@ const val maxLength = 6
 
 fun navigateToDetails(navController: NavHostController, license: String, context: Context) {
     if (license.length == maxLength) {
-        navController.navigate(BottomBarScreen.Details.route + "/$license")
+        navController.navigate(BottomBarScreen.Products.route + "/$license")
     } else {
         Toast.makeText(context, "La matricula debe ser de 6 digitos", Toast.LENGTH_LONG).show()
     }

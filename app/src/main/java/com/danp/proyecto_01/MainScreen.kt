@@ -1,5 +1,6 @@
 package com.danp.proyecto_01
 
+import androidx.activity.viewModels
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.RowScope
@@ -22,13 +23,18 @@ import androidx.navigation.NavGraph.Companion.findStartDestination
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
+import com.danp.proyecto_01.data.ProductApplication
+import com.danp.proyecto_01.data.ProductViewModel
+import com.danp.proyecto_01.data.ProductViewModelFactory
 
 @Composable
 fun MainScreen(
+    productViewModel: ProductViewModel,
     startRoute: String,
-    signIn: (String, String) -> (Unit),
-    createAccount: (String, String) -> (Unit),
+    signIn: (String, String, ProductViewModel) -> (Unit),
+    createAccount: (String, String, ProductViewModel) -> (Unit),
 ) {
+
     val navController = rememberNavController()
     val bottomBarState = rememberSaveable { (mutableStateOf(true)) }
     val navBackStackEntry by navController.currentBackStackEntryAsState()
@@ -39,7 +45,7 @@ fun MainScreen(
             // Show BottomBar
             bottomBarState.value = true
         }
-        "details" -> {
+        "products" -> {
             // Show BottomBar
             bottomBarState.value = true
         }
@@ -68,6 +74,7 @@ fun MainScreen(
         }
     ) {
         BottomNavGraph(
+            productViewModel,
             navController = navController,
             startRoute,
             signIn,
@@ -80,7 +87,7 @@ fun MainScreen(
 fun BottomBar(navController: NavHostController) {
     val screens = listOf(
         BottomBarScreen.Home,
-        BottomBarScreen.Details,
+        BottomBarScreen.Products,
         BottomBarScreen.Historial,
     )
     val navBackStackEntry by navController.currentBackStackEntryAsState()

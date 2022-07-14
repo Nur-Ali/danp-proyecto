@@ -15,10 +15,10 @@ sealed class BottomBarScreen(
         icon = Icons.Default.Home
     )
 
-    object Details : BottomBarScreen(
-        route = "details",
-        title = "Details",
-        icon = Icons.Default.Description
+    object Products : BottomBarScreen(
+        route = "products",
+        title = "Products",
+        icon = Icons.Default.AccountBox
     )
 
     object Historial : BottomBarScreen(

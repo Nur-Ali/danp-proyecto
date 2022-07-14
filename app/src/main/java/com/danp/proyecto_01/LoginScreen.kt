@@ -28,19 +28,19 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import coil.compose.rememberAsyncImagePainter
+import com.danp.proyecto_01.data.ProductViewModel
 import com.danp.proyecto_01.screens.maxLength
 import com.danp.proyecto_01.screens.navigateToDetails
 import com.google.firebase.auth.FirebaseUser
 
-private fun updateUI(user: FirebaseUser?) {
 
-}
 @Composable
 fun LoginScreen(
-    onSignIn: (String, String) -> (Unit),
-    onCreateAccount: (String, String) -> (Unit),
-    navController: NavHostController
-) {
+    signIn: (String, String, ProductViewModel) -> (Unit),
+    createAccount: (String, String, ProductViewModel) -> (Unit),
+    navController: NavHostController,
+    productViewModel: ProductViewModel,
+    ) {
     Column(
         modifier = Modifier
             .fillMaxSize(),
@@ -93,7 +93,7 @@ fun LoginScreen(
 
         Button(
             onClick = {
-                onSignIn(mail, password)
+                signIn(mail, password, productViewModel)
             },
             modifier = Modifier
                 .padding(top = 16.dp)
