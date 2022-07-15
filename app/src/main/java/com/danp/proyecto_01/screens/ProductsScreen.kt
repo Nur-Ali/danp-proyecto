@@ -21,7 +21,7 @@ import com.danp.proyecto_01.data.Product
 import com.danp.proyecto_01.data.ProductViewModel
 
 @Composable
-fun ProductsScreen(productViewModel: ProductViewModel) {
+fun ProductsScreen(productViewModel: ProductViewModel?) {
     Box(
         modifier = Modifier
             .fillMaxSize()
@@ -29,16 +29,16 @@ fun ProductsScreen(productViewModel: ProductViewModel) {
     ) {
         ProductCRUD(
             productViewModel,
-            onAddProduct = { productViewModel.addProduct(it) },
-            onEditProduct = { productViewModel.updateProduct(it) },
-            onDeleteProduct = { productViewModel.deleteProduct(it) }
+            onAddProduct = { productViewModel?.addProduct(it) },
+            onEditProduct = { productViewModel?.updateProduct(it) },
+            onDeleteProduct = { productViewModel?.deleteProduct(it) }
         )
     }
 }
 
 @Composable
 fun ProductCRUD(
-    productViewModel: ProductViewModel,
+    productViewModel: ProductViewModel?,
     onAddProduct: (Product) -> Unit,
     onEditProduct: (Product) -> Unit,
     onDeleteProduct: (Product) -> Unit

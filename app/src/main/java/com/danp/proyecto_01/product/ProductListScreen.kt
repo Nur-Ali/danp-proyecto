@@ -23,11 +23,11 @@ import com.danp.proyecto_01.data.ProductViewModel
 @Composable
 fun ProductListScreen(
     navController: NavController,
-    productViewModel: ProductViewModel,
+    productViewModel: ProductViewModel?,
     onSetAppTitle: (String) -> Unit,
     onShowFab: (Boolean) -> Unit
 ) {
-    val cars: List<Product> by productViewModel.allProducts.observeAsState(listOf())
+    val cars: List<Product> by productViewModel?.allProducts!!.observeAsState(listOf())
 
     LaunchedEffect(Unit) {
         onSetAppTitle("Lista de productos")

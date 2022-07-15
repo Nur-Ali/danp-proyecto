@@ -59,9 +59,7 @@ class MainActivity : ComponentActivity() {
                     // Sign in success, update UI with the signed-in user's information
                     Log.d(TAG, "createUserWithEmail:success")
                     val user = auth.currentUser
-                    if (productViewModel != null) {
-                        updateUI(user, productViewModel)
-                    }
+                    updateUI(user, productViewModel)
                 } else {
                     // If sign in fails, display a message to the user.
                     Log.w(TAG, "createUserWithEmail:failure", task.exception)
@@ -69,9 +67,7 @@ class MainActivity : ComponentActivity() {
                         baseContext, "Authentication failed.",
                         Toast.LENGTH_SHORT
                     ).show()
-                    if (productViewModel != null) {
-                        updateUI(null, productViewModel)
-                    }
+                    updateUI(null, productViewModel)
                 }
             }
         // [END create_user_with_email]
@@ -85,9 +81,7 @@ class MainActivity : ComponentActivity() {
                     // Sign in success, update UI with the signed-in user's information
                     Log.d(TAG, "signInWithEmail:success")
                     val user = auth.currentUser
-                    if (productViewModel != null) {
-                        updateUI(user, productViewModel)
-                    }
+                    updateUI(user, productViewModel)
                 } else {
                     // If sign in fails, display a message to the user.
                     Log.w(TAG, "signInWithEmail:failure", task.exception)
@@ -95,15 +89,13 @@ class MainActivity : ComponentActivity() {
                         baseContext, "Authentication failed.",
                         Toast.LENGTH_SHORT
                     ).show()
-                    if (productViewModel != null) {
-                        updateUI(null, productViewModel)
-                    }
+                    updateUI(null, productViewModel)
                 }
             }
         // [END sign_in_with_email]
     }
 
-    private fun updateUI(user: FirebaseUser?, productViewModel: ProductViewModel) {
+    private fun updateUI(user: FirebaseUser?, productViewModel: ProductViewModel?) {
 
         val startRoute = if (user == null) {
             BottomBarScreen.Login.route

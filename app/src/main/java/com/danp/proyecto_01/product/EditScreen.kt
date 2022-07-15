@@ -25,7 +25,7 @@ import com.danp.proyecto_01.data.ProductViewModel
 fun EditScreen(
     productId: String?,
     navController: NavController,
-    productViewModel: ProductViewModel,
+    productViewModel: ProductViewModel?,
     onSetAppTitle: (String) -> Unit,
     onShowFab: (Boolean) -> Unit,
     onProductEdited: (Product) -> Unit
@@ -35,7 +35,7 @@ fun EditScreen(
         onShowFab(false)
     }
 
-    val receivedProduct: Product by productViewModel.getProduct(productId!!.toInt())
+    val receivedProduct: Product by productViewModel?.getProduct(productId!!.toInt())!!
         .observeAsState(Product(0, "", "","", "", "", "", "", "", "", "", ""))
 
     var name by remember { mutableStateOf("") }
@@ -109,7 +109,7 @@ fun EditScreen(
 
         Button(
             onClick = {
-                if (productViewModel.isItemValid(name, description, amount, price)) {
+                if (productViewModel!!.isItemValid(name, description, amount, price)) {
                     val updatedItem = receivedProduct.copy(
                         productName = name.trim(),
                         productDescription = description.trim(),

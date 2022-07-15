@@ -29,10 +29,10 @@ import com.danp.proyecto_01.data.ProductViewModelFactory
 
 @Composable
 fun MainScreen(
-    productViewModel: ProductViewModel,
+    productViewModel: ProductViewModel?,
     startRoute: String,
-    signIn: (String, String, ProductViewModel) -> (Unit),
-    createAccount: (String, String, ProductViewModel) -> (Unit),
+    signIn: (String, String, ProductViewModel?) -> (Unit),
+    createAccount: (String, String, ProductViewModel?) -> (Unit),
 ) {
 
     val navController = rememberNavController()

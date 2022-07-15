@@ -23,30 +23,25 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import coil.compose.rememberAsyncImagePainter
 import com.danp.proyecto_01.BottomBarScreen
+import com.google.firebase.auth.FirebaseAuth
 
-const val maxLength = 6
 
-fun navigateToDetails(navController: NavHostController, license: String, context: Context) {
-    if (license.length == maxLength) {
-        navController.navigate(BottomBarScreen.Products.route + "/$license")
-    } else {
-        Toast.makeText(context, "La matricula debe ser de 6 digitos", Toast.LENGTH_LONG).show()
-    }
+fun signOut(navController: NavHostController){
+    FirebaseAuth.getInstance().signOut()
+    navController.navigate("login")
 }
+
 
 @Composable
 fun HomeScreen(navController: NavHostController) {
+    val email = FirebaseAuth.getInstance().currentUser?.email;
+
     Column(
         modifier = Modifier
             .fillMaxSize(),
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center
     ) {
-        var license by remember {
-            mutableStateOf("")
-        }
-        val pattern = remember { Regex("^[a-zA-Z0-9]*$") }
-        val context = LocalContext.current
         Text(
             text = "FoodBudget",
             fontSize = MaterialTheme.typography.h3.fontSize,
@@ -66,11 +61,21 @@ fun HomeScreen(navController: NavHostController) {
                 )
         }
         Text(
-            text = "Bienvenido",
+            text = "Bienvenido $email",
             color =  Color(0xFF60708F)               ,
             style = MaterialTheme.typography.subtitle2,
             fontSize = MaterialTheme.typography.h5.fontSize,
         )
+
+        Button(
+            onClick = {
+                signOut(navController)
+            },
+            modifier = Modifier.padding(top = 16.dp),
+            colors = ButtonDefaults.buttonColors(backgroundColor = Color(0xFF093980))
+        ) {
+            Text(text = "Cerrar sesión",  color = Color.White)
+        }
 
     }
 }

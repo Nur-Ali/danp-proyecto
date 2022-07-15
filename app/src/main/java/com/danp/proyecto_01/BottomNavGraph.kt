@@ -9,11 +9,11 @@ import com.danp.proyecto_01.screens.*
 
 @Composable
 fun BottomNavGraph(
-    productViewModel: ProductViewModel,
+    productViewModel: ProductViewModel?,
     navController: NavHostController,
     startRoute: String,
-    signIn: (String, String, ProductViewModel) -> (Unit),
-    createAccount: (String, String, ProductViewModel) -> (Unit),
+    signIn: (String, String, ProductViewModel?) -> (Unit),
+    createAccount: (String, String, ProductViewModel?) -> (Unit),
 ) {
     NavHost(
         navController = navController,

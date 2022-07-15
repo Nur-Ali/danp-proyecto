@@ -20,6 +20,7 @@ import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.text.AnnotatedString
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.ImeAction
+import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavDestination
 import androidx.navigation.NavDestination.Companion.hierarchy
@@ -29,17 +30,15 @@ import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import coil.compose.rememberAsyncImagePainter
 import com.danp.proyecto_01.data.ProductViewModel
-import com.danp.proyecto_01.screens.maxLength
-import com.danp.proyecto_01.screens.navigateToDetails
 import com.google.firebase.auth.FirebaseUser
 
 
 @Composable
 fun LoginScreen(
-    signIn: (String, String, ProductViewModel) -> (Unit),
-    createAccount: (String, String, ProductViewModel) -> (Unit),
+    signIn: (String, String, ProductViewModel?) -> (Unit),
+    createAccount: (String, String, ProductViewModel?) -> (Unit),
     navController: NavHostController,
-    productViewModel: ProductViewModel,
+    productViewModel: ProductViewModel?,
     ) {
     Column(
         modifier = Modifier
@@ -88,6 +87,7 @@ fun LoginScreen(
             onValueChange = {
                 password = it
             },
+            keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password),
             label = { Text(text = "Contraseña") },
         )
 
@@ -95,9 +95,7 @@ fun LoginScreen(
             onClick = {
                 signIn(mail, password, productViewModel)
             },
-            modifier = Modifier
-                .padding(top = 16.dp)
-                .fillMaxWidth(),
+            modifier = Modifier.padding(top = 16.dp),
             colors = ButtonDefaults.buttonColors(backgroundColor = Color(0xFF093980))
         ) {
             Text(text = "Iniciar sesión",  color = Color.White)

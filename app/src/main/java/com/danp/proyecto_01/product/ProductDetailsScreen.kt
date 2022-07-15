@@ -25,7 +25,7 @@ import com.danp.proyecto_01.data.ProductViewModel
 fun ProductDetailsScreen(
     productId: String?,
     navController: NavController,
-    productViewModel: ProductViewModel,
+    productViewModel: ProductViewModel?,
     onSetAppTitle: (String) -> Unit,
     onShowFab: (Boolean) -> Unit,
     onCarDeleted: (Product) -> Unit
@@ -36,7 +36,7 @@ fun ProductDetailsScreen(
         onShowFab(false)
     }
 
-    val receiverProduct = productViewModel.getProduct(productId!!.toInt()).observeAsState()
+    val receiverProduct = productViewModel?.getProduct(productId!!.toInt())!!.observeAsState()
     val product = receiverProduct.value ?: Product(
         0, "", "","",
         "", "", "", "", "",

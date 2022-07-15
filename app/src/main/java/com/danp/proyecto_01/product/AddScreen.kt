@@ -25,7 +25,7 @@ import com.danp.proyecto_01.data.ProductViewModel
 @Composable
 fun AddScreen(
     navController: NavController,
-    productViewModel: ProductViewModel,
+    productViewModel: ProductViewModel?,
     onSetAppTitle: (String) -> Unit,
     onShowFab: (Boolean) -> Unit,
     onCarAdded: (Product) -> Unit
@@ -96,7 +96,7 @@ fun AddScreen(
 
         Button(
             onClick = {
-                if (productViewModel.isItemValid(name, description, amount, price)) {
+                if (productViewModel!!.isItemValid(name, description, amount, price)) {
                     onCarAdded(
                         Product(
                             0,
