@@ -21,6 +21,7 @@ import androidx.compose.ui.text.AnnotatedString
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
+import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavDestination
 import androidx.navigation.NavDestination.Companion.hierarchy
@@ -89,6 +90,7 @@ fun LoginScreen(
             },
             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password),
             label = { Text(text = "Contraseña") },
+            visualTransformation = PasswordVisualTransformation()
         )
 
         Button(
