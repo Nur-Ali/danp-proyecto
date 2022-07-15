@@ -64,7 +64,7 @@ fun CreateAccountScreen(
                 .fillMaxWidth(),
         ) {
             Image(
-                painter = rememberAsyncImagePainter("https://www.manualesdetodo.net/wp-content/uploads/2020/01/b8-1980-1536x782.png"),
+                painter = rememberAsyncImagePainter("https://st2.depositphotos.com/1177973/8007/i/950/depositphotos_80072000-stock-photo-paper-bag-with-food.jpg"),
                 contentDescription = null,
                 modifier = Modifier
                     .size(250.dp)

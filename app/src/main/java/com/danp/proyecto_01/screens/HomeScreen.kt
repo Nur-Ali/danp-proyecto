@@ -48,7 +48,7 @@ fun HomeScreen(navController: NavHostController) {
         val pattern = remember { Regex("^[a-zA-Z0-9]*$") }
         val context = LocalContext.current
         Text(
-            text = "EasyPlate",
+            text = "FoodBudget",
             fontSize = MaterialTheme.typography.h3.fontSize,
             fontWeight = FontWeight.Bold,
             color = Color(0xFF093980),
@@ -59,25 +59,17 @@ fun HomeScreen(navController: NavHostController) {
                 .fillMaxWidth(),
         ) {
             Image(
-                painter = rememberAsyncImagePainter("https://www.manualesdetodo.net/wp-content/uploads/2020/01/b8-1980-1536x782.png"),
+                painter = rememberAsyncImagePainter("https://st2.depositphotos.com/1177973/8007/i/950/depositphotos_80072000-stock-photo-paper-bag-with-food.jpg"),
                 contentDescription = null,
                 modifier = Modifier
                     .size(250.dp)
                 )
         }
-        OutlinedTextField(
-            value = license,
-            placeholder = { Text(text = "Ingrese el código de la placa") },
-            onValueChange = {
-                if (it.matches(pattern) && it.length <= maxLength) license = it
-            },
-            label = { Text(text = "Placa") },
-            keyboardOptions = KeyboardOptions(
-                imeAction = ImeAction.Search
-            ),
-            keyboardActions = KeyboardActions(
-                onSearch = { navigateToDetails(navController, license, context) }
-            )
+        Text(
+            text = "Bienvenido",
+            color =  Color(0xFF60708F)               ,
+            style = MaterialTheme.typography.subtitle2,
+            fontSize = MaterialTheme.typography.h5.fontSize,
         )
 
     }

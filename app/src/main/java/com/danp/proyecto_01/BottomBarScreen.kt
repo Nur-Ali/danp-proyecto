@@ -17,14 +17,14 @@ sealed class BottomBarScreen(
 
     object Products : BottomBarScreen(
         route = "products",
-        title = "Products",
-        icon = Icons.Default.AccountBox
+        title = "Productos",
+        icon = Icons.Default.ShoppingCart
     )
 
-    object Historial : BottomBarScreen(
-        route = "historial",
-        title = "Historial",
-        icon = Icons.Default.History
+    object Recetas : BottomBarScreen(
+        route = "recetas",
+        title = "Recetas",
+        icon = Icons.Default.Pageview
     )
 
     object Login : BottomBarScreen(

@@ -26,8 +26,8 @@ fun BottomNavGraph(
             ProductsScreen(productViewModel)
         }
 
-        composable(route = BottomBarScreen.Historial.route) {
-            Conversation(SampleData.autos)
+        composable(route = BottomBarScreen.Recetas.route) {
+            Conversation(SampleData.recetas)
         }
         composable(route = BottomBarScreen.Login.route) {
             LoginScreen(signIn, createAccount, navController, productViewModel)
