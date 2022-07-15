@@ -1,4 +1,4 @@
-package com.danp.danp_laboratorio05.screens
+package com.danp.proyecto_01.product
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -13,7 +13,6 @@ import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
@@ -28,11 +27,10 @@ fun ProductListScreen(
     onSetAppTitle: (String) -> Unit,
     onShowFab: (Boolean) -> Unit
 ) {
-//    val appTitle = stringResource(id = R.string.app_name)
     val cars: List<Product> by productViewModel.allProducts.observeAsState(listOf())
 
     LaunchedEffect(Unit) {
-//        onSetAppTitle(appTitle)
+        onSetAppTitle("Lista de productos")
         onShowFab(true)
     }
 
@@ -67,13 +65,13 @@ fun ItemHeaderLayout() {
             fontWeight = FontWeight.Bold
         )
         Text(
-            "Cantidad",
+            "Precio",
             modifier = Modifier.weight(1f),
             color = Color.White,
             fontWeight = FontWeight.Bold
         )
         Text(
-            "Precio",
+            "Cantidad",
             modifier = Modifier.weight(1f),
             color = Color.White,
             fontWeight = FontWeight.Bold

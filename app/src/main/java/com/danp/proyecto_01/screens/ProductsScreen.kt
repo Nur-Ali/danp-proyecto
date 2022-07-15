@@ -1,30 +1,22 @@
 package com.danp.proyecto_01.screens
 
-import android.widget.Toast
-import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.items
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.runtime.*
-import androidx.compose.runtime.livedata.observeAsState
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import com.danp.danp_laboratorio05.screens.AddScreen
-import com.danp.danp_laboratorio05.screens.EditScreen
-import com.danp.danp_laboratorio05.screens.ProductDetailsScreen
-import com.danp.danp_laboratorio05.screens.ProductListScreen
+import com.danp.proyecto_01.product.AddScreen
+import com.danp.proyecto_01.product.EditScreen
+import com.danp.proyecto_01.product.ProductDetailsScreen
+import com.danp.proyecto_01.product.ProductListScreen
 import com.danp.proyecto_01.data.Product
 import com.danp.proyecto_01.data.ProductViewModel
 

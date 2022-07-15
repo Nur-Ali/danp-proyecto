@@ -1,4 +1,4 @@
-package com.danp.danp_laboratorio05.screens
+package com.danp.proyecto_01.product
 
 import android.widget.Toast
 import androidx.compose.foundation.background
@@ -38,18 +38,21 @@ fun EditScreen(
     val receivedProduct: Product by productViewModel.getProduct(productId!!.toInt())
         .observeAsState(Product(0, "", "","", "", "", "", "", "", "", "", ""))
 
-    var carPlate by remember { mutableStateOf("") }
-    var carColor by remember { mutableStateOf("") }
-    var carBrand by remember { mutableStateOf("") }
-    var carModel by remember { mutableStateOf("") }
+    var name by remember { mutableStateOf("") }
+    var description by remember { mutableStateOf("") }
+    var amount by remember { mutableStateOf("") }
+    var price by remember { mutableStateOf("") }
+    var type by remember { mutableStateOf("") }
     val context = LocalContext.current
 
     if (receivedProduct.id != 0) {
         LaunchedEffect(Unit) {
-            carPlate = receivedProduct.productName
-            carColor = receivedProduct.productName
-            carBrand = receivedProduct.productName
-            carModel = receivedProduct.productName
+            name = receivedProduct.productName
+            description = receivedProduct.productDescription
+            amount = receivedProduct.productAmount
+            price = receivedProduct.productPrice
+            type = receivedProduct.productType
+
         }
     }
 
@@ -60,36 +63,45 @@ fun EditScreen(
         horizontalAlignment = Alignment.CenterHorizontally,
     ) {
         OutlinedTextField(
-            value = carPlate,
-            onValueChange = { carPlate = it },
-            label = { Text("Placa") },
+            value = name,
+            onValueChange = { name = it },
+            label = { Text("Nombre") },
             modifier = Modifier
                 .padding(top = 16.dp)
                 .fillMaxWidth()
         )
 
         OutlinedTextField(
-            value = carColor,
-            onValueChange = { carColor = it },
-            label = { Text("Color") },
+            value = description,
+            onValueChange = { description = it },
+            label = { Text("Descripcion") },
             modifier = Modifier
                 .padding(top = 16.dp)
                 .fillMaxWidth()
         )
 
         OutlinedTextField(
-            value = carBrand,
-            onValueChange = { carBrand = it },
-            label = { Text("Marca") },
+            value = amount,
+            onValueChange = { amount = it },
+            label = { Text("Cantidad") },
             modifier = Modifier
                 .padding(top = 16.dp)
                 .fillMaxWidth()
         )
 
         OutlinedTextField(
-            value = carModel,
-            onValueChange = { carModel = it },
-            label = { Text("Modelo") },
+            value = price,
+            onValueChange = { price = it },
+            label = { Text("Precio") },
+            modifier = Modifier
+                .padding(top = 16.dp)
+                .fillMaxWidth()
+        )
+
+        OutlinedTextField(
+            value = type,
+            onValueChange = { type = it },
+            label = { Text("Tipo") },
             modifier = Modifier
                 .padding(top = 16.dp)
                 .fillMaxWidth()
@@ -97,12 +109,12 @@ fun EditScreen(
 
         Button(
             onClick = {
-                if (productViewModel.isItemValid(carPlate, carColor, carBrand, carModel)) {
+                if (productViewModel.isItemValid(name, description, amount, price)) {
                     val updatedItem = receivedProduct.copy(
-//                        carPlate = carPlate.trim(),
-//                        carColor = carColor.trim(),
-//                        carBrand = carBrand.trim(),
-//                        carModel = carModel.trim(),
+                        productName = name.trim(),
+                        productDescription = description.trim(),
+                        productAmount = amount.trim(),
+                        productPrice = price.trim(),
                     )
                     onProductEdited(updatedItem)
 

@@ -1,4 +1,4 @@
-package com.danp.danp_laboratorio05.screens
+package com.danp.proyecto_01.product
 
 import android.widget.Toast
 import androidx.compose.foundation.background
@@ -25,15 +25,17 @@ import com.danp.proyecto_01.data.ProductViewModel
 @Composable
 fun AddScreen(
     navController: NavController,
-    carViewModel: ProductViewModel,
+    productViewModel: ProductViewModel,
     onSetAppTitle: (String) -> Unit,
     onShowFab: (Boolean) -> Unit,
     onCarAdded: (Product) -> Unit
 ) {
-    var carPlate by remember { mutableStateOf("") }
-    var carColor by remember { mutableStateOf("") }
-    var carBrand by remember { mutableStateOf("") }
-    var carModel by remember { mutableStateOf("") }
+    var name by remember { mutableStateOf("") }
+    var description by remember { mutableStateOf("") }
+    var amount by remember { mutableStateOf("") }
+    var price by remember { mutableStateOf("") }
+    var type by remember { mutableStateOf("") }
+
     val context = LocalContext.current
 
     LaunchedEffect(Unit) {
@@ -48,36 +50,45 @@ fun AddScreen(
         horizontalAlignment = Alignment.CenterHorizontally,
     ) {
         OutlinedTextField(
-            value = carPlate,
-            onValueChange = { carPlate = it },
-            label = { Text("Placa") },
+            value = name,
+            onValueChange = { name = it },
+            label = { Text("Nombre") },
             modifier = Modifier
                 .padding(top = 16.dp)
                 .fillMaxWidth()
         )
 
         OutlinedTextField(
-            value = carColor,
-            onValueChange = { carColor = it },
-            label = { Text("Color") },
+            value = description,
+            onValueChange = { description = it },
+            label = { Text("Descripcion") },
             modifier = Modifier
                 .padding(top = 16.dp)
                 .fillMaxWidth()
         )
 
         OutlinedTextField(
-            value = carBrand,
-            onValueChange = { carBrand = it },
-            label = { Text("Marca") },
+            value = amount,
+            onValueChange = { amount = it },
+            label = { Text("Cantidad") },
             modifier = Modifier
                 .padding(top = 16.dp)
                 .fillMaxWidth()
         )
 
         OutlinedTextField(
-            value = carModel,
-            onValueChange = { carModel = it },
-            label = { Text("Modelo") },
+            value = price,
+            onValueChange = { price = it },
+            label = { Text("Precio") },
+            modifier = Modifier
+                .padding(top = 16.dp)
+                .fillMaxWidth()
+        )
+
+        OutlinedTextField(
+            value = type,
+            onValueChange = { type = it },
+            label = { Text("Tipo") },
             modifier = Modifier
                 .padding(top = 16.dp)
                 .fillMaxWidth()
@@ -85,21 +96,21 @@ fun AddScreen(
 
         Button(
             onClick = {
-                if (carViewModel.isItemValid(carPlate, carColor, carBrand, carModel)) {
+                if (productViewModel.isItemValid(name, description, amount, price)) {
                     onCarAdded(
                         Product(
                             0,
-                            carPlate.trim(),
-                            carColor.trim(),
-                            carBrand.trim(),
-                            carModel.trim(),
-                            carModel.trim(),
-                            carModel.trim(),
-                            carModel.trim(),
-                            carModel.trim(),
-                            carModel.trim(),
-                            carModel.trim(),
-                            carModel.trim(),
+                            name.trim(),
+                            description.trim(),
+                            "",
+                            amount.trim(),
+                            price.trim(),
+                            "",
+                            "",
+                            type.trim(),
+                            "",
+                            "",
+                            "",
                             )
                     )
                     navController.navigate("home") {

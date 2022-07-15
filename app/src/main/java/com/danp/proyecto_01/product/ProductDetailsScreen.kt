@@ -1,4 +1,4 @@
-package com.danp.danp_laboratorio05.screens
+package com.danp.proyecto_01.product
 
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
@@ -71,47 +71,80 @@ fun ProductDetailsScreen(
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         Row(
-            horizontalArrangement = Arrangement.Center,
-            modifier = Modifier
-                .fillMaxWidth(),
-        ) {
-            Card(
-                elevation = 10.dp,
-                modifier =
-                Modifier
-                    .padding(10.dp)
-                    .height(70.dp)
-                    .width(300.dp)
-                ,
-                border = BorderStroke(1.dp, Color.Black),
-            ) {
-                Text(
-                    text =  product.productName,
-                    fontSize = MaterialTheme.typography.h3.fontSize,
-                    fontWeight = FontWeight.Bold,
-                    textAlign = TextAlign.Center,
-                    color = Color(0xFF60708F)
-                )
-            }
-        }
-
-
-        Row(
             horizontalArrangement = Arrangement.Start,
             modifier = Modifier
                 .padding(
-                    start = 30.dp,
                     top = 15.dp,
                     end = 30.dp,
                     bottom = 15.dp,
                 )
         ) {
             Text(
-                text = "Marca",
+                text = "Nombre",
                 fontSize = MaterialTheme.typography.body1.fontSize,
                 fontWeight = FontWeight.Bold,
                 modifier = Modifier
-                    .width(100.dp),
+                    .width(100.dp)
+                    .padding(end = 8.dp)
+                ,
+                textAlign = TextAlign.End,
+                color = Color(0xFF1873B9)
+            )
+            Text(
+                text = product.productName,
+                fontSize = MaterialTheme.typography.body1.fontSize,
+                fontWeight = FontWeight.Bold,
+                color = Color(0xFF60708F)
+
+            )
+        }
+
+        Row(
+            horizontalArrangement = Arrangement.Start,
+            modifier = Modifier
+                .padding(
+                    top = 15.dp,
+                    end = 30.dp,
+                    bottom = 15.dp,
+                ),
+        ) {
+            Text(
+                text = "Descripcion",
+                fontSize = MaterialTheme.typography.body1.fontSize,
+                fontWeight = FontWeight.Bold,
+                textAlign = TextAlign.End,
+                modifier = Modifier
+                    .width(100.dp)
+                    .padding(end = 8.dp)
+                ,
+                color = Color(0xFF1873B9)
+            )
+            Text(
+                text = product.productDescription,
+                fontSize = MaterialTheme.typography.body1.fontSize,
+                fontWeight = FontWeight.Bold,
+                color = Color(0xFF60708F)
+
+            )
+        }
+        Row(
+            horizontalArrangement = Arrangement.Start,
+            modifier = Modifier
+                .padding(
+                    top = 15.dp,
+                    end = 30.dp,
+                    bottom = 15.dp,
+                )
+        ) {
+            Text(
+                text = "Cantidad",
+                fontSize = MaterialTheme.typography.body1.fontSize,
+                fontWeight = FontWeight.Bold,
+                textAlign = TextAlign.End,
+                modifier = Modifier
+                    .width(100.dp)
+                    .padding(end = 8.dp)
+                ,
                 color = Color(0xFF1873B9)
             )
             Text(
@@ -127,48 +160,53 @@ fun ProductDetailsScreen(
             horizontalArrangement = Arrangement.Start,
             modifier = Modifier
                 .padding(
-                    start = 30.dp,
-                    top = 15.dp,
-                    end = 30.dp,
-                    bottom = 15.dp,
-                ),
-        ) {
-            Text(
-                text = "Color",
-                fontSize = MaterialTheme.typography.body1.fontSize,
-                fontWeight = FontWeight.Bold,
-                modifier = Modifier
-                    .width(100.dp),
-                color = Color(0xFF1873B9)
-            )
-            Text(
-                text = product.productName,
-                fontSize = MaterialTheme.typography.body1.fontSize,
-                fontWeight = FontWeight.Bold,
-                color = Color(0xFF60708F)
-
-            )
-        }
-        Row(
-            horizontalArrangement = Arrangement.Start,
-            modifier = Modifier
-                .padding(
-                    start = 30.dp,
                     top = 15.dp,
                     end = 30.dp,
                     bottom = 15.dp,
                 )
         ) {
             Text(
-                text = "Modelo",
+                text = "Precio",
                 fontSize = MaterialTheme.typography.body1.fontSize,
                 fontWeight = FontWeight.Bold,
+                textAlign = TextAlign.End,
                 modifier = Modifier
-                    .width(100.dp),
+                    .width(100.dp)
+                    .padding(end = 8.dp)
+                ,
                 color = Color(0xFF1873B9)
             )
             Text(
-                text = product.productName,
+                text = product.productPrice,
+                fontSize = MaterialTheme.typography.body1.fontSize,
+                fontWeight = FontWeight.Bold,
+                color = Color(0xFF60708F)
+
+            )
+        }
+
+        Row(
+            horizontalArrangement = Arrangement.Start,
+            modifier = Modifier
+                .padding(
+                    top = 15.dp,
+                    end = 30.dp,
+                    bottom = 15.dp,
+                )
+        ) {
+            Text(
+                text = "Tipo",
+                fontSize = MaterialTheme.typography.body1.fontSize,
+                fontWeight = FontWeight.Bold,
+                textAlign = TextAlign.End,
+                modifier = Modifier
+                    .width(100.dp)
+                    .padding(end = 8.dp)
+                ,
+                color = Color(0xFF1873B9)
+            )
+            Text(
+                text = product.productType,
                 fontSize = MaterialTheme.typography.body1.fontSize,
                 fontWeight = FontWeight.Bold,
                 color = Color(0xFF60708F)
@@ -188,16 +226,16 @@ fun ProductDetailsScreen(
                 imageVector = Icons.Filled.Edit,
                 contentDescription = null,
                 tint = Color.White,
-                modifier = Modifier.size(16.dp)
+                modifier = Modifier.size(16.dp).padding(bottom = 32.dp)
 
             )
-            Text("Editar vehiculo", modifier = Modifier.padding(start = 8.dp), color = Color.White)
+            Text("Editar Producto", modifier = Modifier.padding(start = 8.dp), color = Color.White)
         }
 
         OutlinedButton(
             onClick = { showDialog.value = true },
             modifier = Modifier
-                .padding(top = 16.dp)
+                .padding(top = 16.dp, bottom = 32.dp)
                 .fillMaxWidth()
         ) {
             Icon(
